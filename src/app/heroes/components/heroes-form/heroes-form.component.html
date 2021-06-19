@@ -1,39 +1,37 @@
 <div class="container">
-    <form [formGroup]="heroForm" (ngSubmit)="submitForm()">
-        <div class="display: flex;">
-            <div style="display: flex; justify-content:center; padding-bottom: 1rem">
-                <img style="width: 100px; height: 100px; border: 1px solid lightgrey" [src]="heroForm.controls.image.value" alt="">
-            </div>
+    <form [formGroup]="heroForm">
+        <div class="img-center">
+            <img class="img" [src]="heroForm.controls.image.value">
         </div>
-        <div style="display: flex">
-            <div style="width:50%; padding: 0 1rem">
-                <mat-form-field style="width: 100%" appearance="outline">
-                    <mat-label>Nombre</mat-label>
+        <div class="d-flex">
+            <div class="container-50">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nombre *</mat-label>
                     <input appUppercaseText formControlName="name" matInput placeholder="Hulk">
                     <mat-error *ngIf="heroForm.controls.name.invalid">{{errorMessages.getErrorMessage('name')}}</mat-error>
                 </mat-form-field>
             </div>
-            <div style="width: 50%; padding: 0 1rem">
-                <mat-form-field style="width: 100%" appearance="outline">
-                    <mat-label>Apellido</mat-label>
+            <div class="container-50">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Apellido *</mat-label>
                     <input formControlName="lastname" matInput placeholder="Díaz">
                     <mat-error *ngIf="heroForm.controls.lastname.invalid">{{errorMessages.getErrorMessage('lastname')}}</mat-error>
                 </mat-form-field>
             </div>
         </div>
-        <div style="display: flex">
-            <div style="width:100%; padding: 0 1rem">
-                <mat-form-field appearance="outline" style="width:100%">
-                    <mat-label>Correo electrónico</mat-label>
+        <div class="d-flex">
+            <div class="container-100">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Correo electrónico *</mat-label>
                     <input formControlName="email" matInput placeholder="hulk@heroes.com">
                     <mat-error *ngIf="heroForm.controls.email.invalid">{{errorMessages.getErrorMessage('email')}}</mat-error>
                 </mat-form-field>
             </div>
         </div>
-        <div style="display: flex">
-            <div style="width:33.33%; padding: 0 1rem;">
-                <mat-form-field style="width: 100%" appearance="outline">
-                    <mat-label>Empresa</mat-label>
+        <div class="d-flex">
+            <div class="container-33">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Empresa *</mat-label>
                     <mat-select formControlName="business">
                         <mat-option [value]="'DC'">DC</mat-option>
                         <mat-option [value]="'Marvel'">Marvel</mat-option>
@@ -41,17 +39,17 @@
                     <mat-error *ngIf="heroForm.controls.business.invalid">{{errorMessages.getErrorMessage('business')}}</mat-error>
                 </mat-form-field>
             </div>
-            <div style="width:33.33%; padding: 0 1rem;">
-                <mat-form-field style="width: 100%" appearance="outline">
-                    <mat-label>Fecha de aparición</mat-label>
+            <div class="container-33">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Fecha de aparición *</mat-label>
                     <input readonly formControlName="appearance" matInput [matDatepicker]="picker">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                     <mat-error *ngIf="heroForm.controls.appearance.invalid">{{errorMessages.getErrorMessage('appearance')}}</mat-error>
                 </mat-form-field>
             </div>
-            <div style="width:33.33%; padding: 0 1rem">
-                <mat-form-field style="width: 100%" appearance="outline">
+            <div class="container-33">
+                <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Imagen de perfil</mat-label>
                     <mat-select formControlName="image">
                         <mat-option value="assets/img/user-profile.png">No aplica</mat-option>
@@ -66,18 +64,18 @@
                 </mat-form-field>
             </div>
         </div>
-        <div style="display: flex">
-            <div style="width:100%; padding: 0 1rem">
-                <mat-form-field appearance="outline" style="width:100%">
+        <div class="d-flex">
+            <div class="container-100">
+                <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Biografía</mat-label>
                     <textarea formControlName="bio" matInput></textarea>
                     <mat-error *ngIf="heroForm.controls.bio.invalid">{{errorMessages.getErrorMessage('bio')}}</mat-error>
                 </mat-form-field>
             </div>
         </div>
-        <div style="display: flex; justify-content: flex-end">
-            <button mat-raised-button color="primary" style="width: 100px; margin: 0 1rem" (click)="cancel()">Cancelar</button>
-            <button type="submit" mat-raised-button color="primary" style="width: 100px; margin: 0 1rem" (click)="submitForm()" [disabled]="heroForm.invalid">{{buttonDescription(heroId$ | async)}}</button>
+        <div class="horizontal-end">
+            <button mat-raised-button color="primary" (click)="cancel()">Cancelar</button>
+            <button mat-raised-button color="primary" (click)="submitForm()" [disabled]="heroForm.invalid">{{buttonDescription(heroId$ | async)}}</button>
         </div>
     </form>
 </div>

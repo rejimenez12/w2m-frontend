@@ -11,6 +11,7 @@ import { ErrorMessages } from '../../validations/error-messages';
 })
 export class HeroesFormComponent {
 
+  private heroId: number;
   @Input()
   public heroForm: FormGroup;
   @Input()
@@ -19,13 +20,10 @@ export class HeroesFormComponent {
   public errorMessages: ErrorMessages;
   @Output()
   public submitEmitter: EventEmitter<number>;
-  
-  private heroId: number;
 
   constructor(private router: Router) { 
     this.submitEmitter = new EventEmitter();
     this.heroId = null;
-    
   }
 
   public buttonDescription(heroId: number): string {

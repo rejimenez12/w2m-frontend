@@ -1,5 +1,4 @@
 import { FormGroup } from "@angular/forms";
-
 export class ErrorMessages {
   constructor(private heroForm: FormGroup) { }
 

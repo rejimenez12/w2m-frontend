@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { delay } from 'rxjs/operators';
 import { LoadingService } from './shared/services/loading.service';
 
@@ -10,12 +11,14 @@ import { LoadingService } from './shared/services/loading.service';
 export class AppComponent implements OnInit{
   public loading: boolean;
 
-  constructor(private loadingService: LoadingService) {
+  constructor(private loadingService: LoadingService,
+              private router: Router) {
     this.loading = false;
   }
 
   public ngOnInit(): void {
     this.listenToLoading();
+    this.router.navigate(['/heroes']);
   }
 
   public listenToLoading(): void {

@@ -12,8 +12,33 @@ body {
     position: relative;
 }
 
+.w-100 {
+    width: 100%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-block {
+    display: block;
+}
+
 .center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.horizontal-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.justify-end {
+    justify-content: flex-end
 }

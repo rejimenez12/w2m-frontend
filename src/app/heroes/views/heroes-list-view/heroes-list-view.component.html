@@ -1,14 +1,15 @@
 <div class="container">
-    <div style="display:flex; justify-content: flex-end">
+    <div class="d-flex justify-end">
         <app-heroes-filter (applyFilter)="applyFilter($event)"></app-heroes-filter>
     </div>
     <mat-card>
-        <div style="display: flex; justify-content: space-between">
+        <div class="d-flex justify-between">
             <h2>Listado de heroes</h2>
             <button (click)="addHero()" mat-mini-fab color="primary" matTooltip="Agregar heroe" [matTooltipPosition]="'above'">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
-        <app-heroes-grid [dataSource]="dataSource" [displayedColumns]="displayedColumns" [loadingHeroes$]="loadingHeroes$" (deleteEmitter)="deleteHero($event)"></app-heroes-grid>
+        <app-heroes-grid [dataSource]="dataSource" [displayedColumns]="displayedColumns" [loadingHeroes$]="loadingHeroes$" (deleteEmitter)="deleteHero($event)">
+        </app-heroes-grid>
     </mat-card>
 </div>

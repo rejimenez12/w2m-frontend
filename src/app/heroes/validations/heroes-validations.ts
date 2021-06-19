@@ -1,6 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { IHero } from "../models/hero.model";
-
 export class HeroesValidation {
     public heroesForm: FormGroup;
 

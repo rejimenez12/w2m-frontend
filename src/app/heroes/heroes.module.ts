@@ -11,7 +11,6 @@ import { HeroesFilterComponent } from './components/heroes-filter/heroes-filter.
 import { HeroesModalComponent } from './components/heroes-modal/heroes-modal.component';
 import { UppercaseTextDirective } from './directives/uppercase-text.directive';
 
-
 @NgModule({
   declarations: [
     HeroesListViewComponent,
