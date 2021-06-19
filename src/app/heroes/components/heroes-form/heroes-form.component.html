@@ -1,0 +1,77 @@
+<div class="container">
+    <form [formGroup]="heroForm">
+        <div class="display: flex;">
+            <div style="display: flex; justify-content:center; padding-bottom: 1rem">
+                <img style="width: 100px; height: 100px; border: 1px solid lightgrey" [src]="heroForm.controls.image.value" alt="">
+            </div>
+        </div>
+        <div style="display: flex">
+            <div style="width:50%; padding: 0 1rem">
+                <mat-form-field style="width: 100%" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input formControlName="name" matInput placeholder="Hulk">
+                </mat-form-field>
+            </div>
+            <div style="width: 50%; padding: 0 1rem">
+                <mat-form-field style="width: 100%" appearance="outline">
+                    <mat-label>Apellido</mat-label>
+                    <input formControlName="lastname" matInput placeholder="Díaz">
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="display: flex">
+            <div style="width:100%; padding: 0 1rem">
+                <mat-form-field appearance="outline" style="width:100%">
+                    <mat-label>Correo electrónico</mat-label>
+                    <input formControlName="email" matInput placeholder="hulk@heroes.com">
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="display: flex">
+            <div style="width:33.33%; padding: 0 1rem;">
+                <mat-form-field style="width: 100%" appearance="outline">
+                    <mat-label>Empresa</mat-label>
+                    <mat-select formControlName="business">
+                        <mat-option [value]="'DC'">DC</mat-option>
+                        <mat-option [value]="'Marvel'">Marvel</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div style="width:33.33%; padding: 0 1rem;">
+                <mat-form-field style="width: 100%" appearance="outline">
+                    <mat-label>Fecha de aparición</mat-label>
+                    <input formControlName="appearance" matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div style="width:33.33%; padding: 0 1rem">
+                <mat-form-field style="width: 100%" appearance="outline">
+                    <mat-label>Imagen de perfil</mat-label>
+                    <mat-select formControlName="image">
+                        <mat-option value="assets/img/user-profile.png">No aplica</mat-option>
+                        <mat-option value="assets/img/aquaman.png">Aquaman.png</mat-option>
+                        <mat-option value="assets/img/batman.png">Batman.png</mat-option>
+                        <mat-option value="assets/img/daredevil.png">Daredevil.png</mat-option>
+                        <mat-option value="assets/img/hulk.png">Hulk.png</mat-option>
+                        <mat-option value="assets/img/linterna-verde.png">Greenlantern.png</mat-option>
+                        <mat-option value="assets/img/spiderman.png">Spiderman.png</mat-option>
+                        <mat-option value="assets/img/wolverine.png">Wolverine.png</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="display: flex">
+            <div style="width:100%; padding: 0 1rem">
+                <mat-form-field appearance="outline" style="width:100%">
+                    <mat-label>Biografía</mat-label>
+                    <textarea formControlName="bio" matInput></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end">
+            <button mat-raised-button color="primary" style="width: 100px; margin: 0 1rem" (click)="cancel()">Cancelar</button>
+            <button mat-raised-button color="primary" style="width: 100px; margin: 0 1rem" (click)="submitForm()">{{buttonDescription(heroId$ | async)}}</button>
+        </div>
+    </form>
+</div>

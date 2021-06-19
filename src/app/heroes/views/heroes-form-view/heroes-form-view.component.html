@@ -1,0 +1,4 @@
+<mat-card>
+    <h2>Formulario de heroes</h2>
+    <app-heroes-form [heroForm]="heroForm" [heroId$]="heroId$" (submitEmitter)="submit($event)"></app-heroes-form>
+</mat-card>

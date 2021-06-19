@@ -1,0 +1,20 @@
+<div class="container">
+    <div style="display:flex; justify-content: flex-end">
+        <app-heroes-filter></app-heroes-filter>
+    </div>
+    <mat-card>
+        <h2>Listado de heroes</h2>
+        <app-heroes-grid [dataSource]="dataSource" [displayedColumns]="displayedColumns" [loadingHeroes$]="loadingHeroes$" (deleteEmitter)="deleteHero($event)"></app-heroes-grid>
+    </mat-card>
+    <section style="display: flex; justify-content: flex-end;">
+        <div class="example-button-row">
+            <div class="example-flex-container">
+                <div class="example-button-container">
+                    <button (click)="addHero()" mat-fab color="primary" matTooltip="Agregar heroe" [matTooltipPosition]="'above'">
+                <mat-icon>add</mat-icon>
+              </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
