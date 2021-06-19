@@ -14,6 +14,9 @@ export class ErrorMessages {
       }
   
       if (this.heroForm.controls[property].hasError('maxlength')) {
+        if (property === 'bio') {
+          return 'Debe contener no más de 4000 caracteres';
+        }
         return 'Debe contener no más de 20 caracteres';
       }
   

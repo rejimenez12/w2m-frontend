@@ -10,8 +10,8 @@ export class HeroesService {
 
   constructor(private http: HttpClient) { }
 
-  public getHeroes(): Observable<IHero[]> {
-    return this.http.get<IHero[]>('http://localhost:3000/heroes');
+  public getHeroes(filter: string = ''): Observable<IHero[]> {
+    return this.http.get<IHero[]>( `http://localhost:3000/heroes${filter}`);
   }
 
   public getHero(idHero: number): Observable<IHero> {
@@ -25,7 +25,6 @@ export class HeroesService {
   public editHero(hero: IHero): Observable<IHero> {
     return this.http.put<IHero>(`http://localhost:3000/heroes/${hero.id}`, hero);
   }
-
 
   public deleteHero(idHero: number): Observable<IHero> {
     return this.http.delete<IHero>(`http://localhost:3000/heroes/${idHero}`);

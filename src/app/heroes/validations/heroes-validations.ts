@@ -11,7 +11,7 @@ export class HeroesValidation {
             name: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
             lastname: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
             email: [null, [Validators.required, Validators.email]],
-            bio: [null], 
+            bio: [null, [Validators.maxLength(4000)]], 
             image: ['assets/img/user-profile.png'],
             appearance: [null, Validators.required],
             business: [null, Validators.required],

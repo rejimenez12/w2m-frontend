@@ -47,6 +47,12 @@ export class HeroesListViewComponent implements OnInit {
     this.router.navigate(['heroes/new']);
   }
 
+  public applyFilter(filterValue: string): void {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
   public deleteHero(heroId: number): void {
     const dialogRef = this.dialog.open(HeroesModalComponent);
 
@@ -55,8 +61,6 @@ export class HeroesListViewComponent implements OnInit {
         this.router.navigate(['heroes']);
       });
     });
-
-   
   }
 
   public ngOnDestroy(): void {

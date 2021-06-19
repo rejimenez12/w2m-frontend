@@ -74,11 +74,11 @@
       "name": "FLASH",
       "lastname": "Allen",
       "email": "flash@heroes.com",
-      "bio": "Flash",
+      "bio": "Biografía de flash",
       "image": "assets/img/daredevil.png",
       "appearance": "2021-06-18T22:00:00.000Z",
       "business": "DC",
-      "id": 8
+      "id": 9
     }
   ]
 }
