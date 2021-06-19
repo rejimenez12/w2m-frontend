@@ -1,10 +1,11 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { IHero } from '../../models/hero.model';
 import { HeroesService } from '../../services/heroes.service';
+import { ErrorMessages } from '../../validations/error-messages';
+import { HeroesValidation } from '../../validations/heroes-validations';
 
 @Component({
   selector: 'app-heroes-form-view',
@@ -14,19 +15,22 @@ import { HeroesService } from '../../services/heroes.service';
 export class HeroesFormViewComponent implements OnInit {
 
   public heroForm: FormGroup;
+  public heroesValidation: HeroesValidation;
   public heroId$: BehaviorSubject<number>;
+  public errorMessages: ErrorMessages;
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private heroesService: HeroesService,
               private router: Router) {
     this.heroId$ = new BehaviorSubject<number>(null);
+    this.heroesValidation = new HeroesValidation(this.fb);
   }
 
-  ngOnInit(): void {
-    this.heroForm = this.validationForm;
+  public ngOnInit(): void {
+    this.heroForm = this.heroesValidation.toFormGroup();
+    this.errorMessages = new ErrorMessages(this.heroForm);
     this.getHeroId();
-    
   }
 
   private getHeroId(): void {
@@ -40,28 +44,17 @@ export class HeroesFormViewComponent implements OnInit {
     });
   }
 
-  private get validationForm(): FormGroup {
-    return this.fb.group({
-      name: [null],
-      lastname: [null],
-      email: [null],
-      bio: [null], 
-      image: ['assets/img/user-profile.png'],
-      appearance: [null],
-      business: [null],
-    });
-  }
-
   public submit(heroId: number): void {
-    console.log(heroId);
     if (heroId) {
-      this.heroesService.editHero({...this.heroForm.value} as IHero).subscribe((hero: IHero) => {
-        console.log(hero);
+      const updateHero = {
+        ... this.heroForm.value,
+        id: heroId,
+      } as IHero; 
+      this.heroesService.editHero(updateHero).subscribe((hero: IHero) => {
         this.router.navigate(['/heroes']);
       });
     } else {
       this.heroesService.createHero({...this.heroForm.value} as IHero).subscribe((hero: IHero) => {
-        console.log(hero);
         this.router.navigate(['/heroes']);
       });
     }

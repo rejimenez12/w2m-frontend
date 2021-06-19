@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { HeroesModalComponent } from '../../components/heroes-modal/heroes-modal.component';
 import { IHero } from '../../models/hero.model';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -19,7 +21,8 @@ export class HeroesListViewComponent implements OnInit {
   public loadingHeroes$: Subject<void>;
 
   constructor(private heroesService: HeroesService,
-              private router: Router) {
+              private router: Router,
+              private dialog: MatDialog) {
     this.unsubscribe = new Subject();
     this.displayedColumns = ['id', 'image', 'name', 'email', 'business', 'appearance', 'bio', 'buttons'];
     this.dataSource = new MatTableDataSource(null);
@@ -45,9 +48,15 @@ export class HeroesListViewComponent implements OnInit {
   }
 
   public deleteHero(heroId: number): void {
-    this.heroesService.deleteHero(heroId).subscribe((hero: IHero) => {
-      console.log(hero);
+    const dialogRef = this.dialog.open(HeroesModalComponent);
+
+    dialogRef.componentInstance.onSaveEvent.subscribe(() => {
+      this.heroesService.deleteHero(heroId).subscribe((hero: IHero) => {
+        this.router.navigate(['heroes']);
+      });
     });
+
+   
   }
 
   public ngOnDestroy(): void {

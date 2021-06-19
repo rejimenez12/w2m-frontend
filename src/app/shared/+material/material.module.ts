@@ -10,6 +10,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [],
@@ -25,7 +27,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatDatepickerModule,
     MatOptionModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatTableModule,
@@ -39,7 +43,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatDatepickerModule,
     MatOptionModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule { }

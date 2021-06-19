@@ -18,7 +18,6 @@ export class HeroesFilterComponent implements OnInit {
   }
 
   public searchHeroes(): void {
-    console.log(this.heroFilterControl.value);
   }
 
 }

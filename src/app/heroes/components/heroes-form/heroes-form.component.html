@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="heroForm">
+    <form [formGroup]="heroForm" (ngSubmit)="submitForm()">
         <div class="display: flex;">
             <div style="display: flex; justify-content:center; padding-bottom: 1rem">
                 <img style="width: 100px; height: 100px; border: 1px solid lightgrey" [src]="heroForm.controls.image.value" alt="">
@@ -9,13 +9,15 @@
             <div style="width:50%; padding: 0 1rem">
                 <mat-form-field style="width: 100%" appearance="outline">
                     <mat-label>Nombre</mat-label>
-                    <input formControlName="name" matInput placeholder="Hulk">
+                    <input appUppercaseText formControlName="name" matInput placeholder="Hulk">
+                    <mat-error *ngIf="heroForm.controls.name.invalid">{{errorMessages.getErrorMessage('name')}}</mat-error>
                 </mat-form-field>
             </div>
             <div style="width: 50%; padding: 0 1rem">
                 <mat-form-field style="width: 100%" appearance="outline">
                     <mat-label>Apellido</mat-label>
                     <input formControlName="lastname" matInput placeholder="Díaz">
+                    <mat-error *ngIf="heroForm.controls.lastname.invalid">{{errorMessages.getErrorMessage('lastname')}}</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -24,6 +26,7 @@
                 <mat-form-field appearance="outline" style="width:100%">
                     <mat-label>Correo electrónico</mat-label>
                     <input formControlName="email" matInput placeholder="hulk@heroes.com">
+                    <mat-error *ngIf="heroForm.controls.email.invalid">{{errorMessages.getErrorMessage('email')}}</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -40,7 +43,7 @@
             <div style="width:33.33%; padding: 0 1rem;">
                 <mat-form-field style="width: 100%" appearance="outline">
                     <mat-label>Fecha de aparición</mat-label>
-                    <input formControlName="appearance" matInput [matDatepicker]="picker">
+                    <input readonly formControlName="appearance" matInput [matDatepicker]="picker">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -71,7 +74,7 @@
         </div>
         <div style="display: flex; justify-content: flex-end">
             <button mat-raised-button color="primary" style="width: 100px; margin: 0 1rem" (click)="cancel()">Cancelar</button>
-            <button mat-raised-button color="primary" style="width: 100px; margin: 0 1rem" (click)="submitForm()">{{buttonDescription(heroId$ | async)}}</button>
+            <button type="submit" mat-raised-button color="primary" style="width: 100px; margin: 0 1rem" (click)="submitForm()" [disabled]="heroForm.invalid">{{buttonDescription(heroId$ | async)}}</button>
         </div>
     </form>
 </div>

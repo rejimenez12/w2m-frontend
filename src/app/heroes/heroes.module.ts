@@ -8,6 +8,8 @@ import { HeroesFormViewComponent } from './views/heroes-form-view/heroes-form-vi
 import { HeroesGridComponent } from './components/heroes-grid/heroes-grid.component';
 import { HeroesFormComponent } from './components/heroes-form/heroes-form.component';
 import { HeroesFilterComponent } from './components/heroes-filter/heroes-filter.component';
+import { HeroesModalComponent } from './components/heroes-modal/heroes-modal.component';
+import { UppercaseTextDirective } from './directives/uppercase-text.directive';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { HeroesFilterComponent } from './components/heroes-filter/heroes-filter.
     HeroesFormViewComponent,
     HeroesGridComponent,
     HeroesFormComponent,
-    HeroesFilterComponent
+    HeroesFilterComponent,
+    HeroesModalComponent,
+    UppercaseTextDirective
   ],
   imports: [
     CommonModule,

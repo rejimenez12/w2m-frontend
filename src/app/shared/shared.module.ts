@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './+material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [DateFormatPipe],
   imports: [
     CommonModule,
     MaterialModule,
@@ -14,7 +13,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DateFormatPipe
+  ],
+  providers: [
+    DateFormatPipe
   ]
 })
 export class SharedModule { }

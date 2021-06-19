@@ -1,24 +1,24 @@
 {
   "heroes": [
     {
-      "id": 1,
       "name": "Aquaman",
       "lastname": "Pérez",
       "email": "aquaman@heroes.com",
       "bio": "El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la vida marina, la cual puede convocar a grandes distancias.",
       "image": "assets/img/aquaman.png",
       "appearance": "1941-11-01",
-      "business": "DC"
+      "business": "DC",
+      "id": 1
     },
     {
-      "id": 2,
       "name": "Batman",
       "lastname": "González",
       "email": "batman@heroes.com",
       "bio": "Los rasgos principales de Batman se resumen en «destreza física, habilidades deductivas y obsesión». La mayor parte de las características básicas de los cómics han variado por las diferentes interpretaciones que le han dado al personaje.",
       "image": "assets/img/batman.png",
       "appearance": "1939-05-01",
-      "business": "DC"
+      "business": "DC",
+      "id": 2
     },
     {
       "id": 3,
@@ -69,6 +69,16 @@
       "image": "assets/img/wolverine.png",
       "appearance": "1974-11-01",
       "business": "Marvel"
+    },
+    {
+      "name": "FLASH",
+      "lastname": "Allen",
+      "email": "flash@heroes.com",
+      "bio": "Flash",
+      "image": "assets/img/daredevil.png",
+      "appearance": "2021-06-18T22:00:00.000Z",
+      "business": "DC",
+      "id": 8
     }
   ]
 }

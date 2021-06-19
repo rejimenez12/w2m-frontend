@@ -1,30 +1,31 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { IHero } from '../../models/hero.model';
+import { ErrorMessages } from '../../validations/error-messages';
 
 @Component({
   selector: 'app-heroes-form',
   templateUrl: './heroes-form.component.html',
   styleUrls: ['./heroes-form.component.scss']
 })
-export class HeroesFormComponent implements OnInit {
+export class HeroesFormComponent {
 
   @Input()
   public heroForm: FormGroup;
   @Input()
   public heroId$: BehaviorSubject<number>;
+  @Input()
+  public errorMessages: ErrorMessages;
   @Output()
   public submitEmitter: EventEmitter<number>;
+  
   private heroId: number;
 
   constructor(private router: Router) { 
     this.submitEmitter = new EventEmitter();
     this.heroId = null;
-  }
-
-  ngOnInit(): void {
+    
   }
 
   public buttonDescription(heroId: number): string {
@@ -33,13 +34,12 @@ export class HeroesFormComponent implements OnInit {
   }
 
   public submitForm(): void {
-    (this.heroId) ? this.submitEmitter.emit(null) : this.submitEmitter.emit(this.heroId);;
+    (this.heroId) ? this.submitEmitter.emit(this.heroId) : this.submitEmitter.emit(null);;
   }
   
   public cancel(): void {
     this.heroForm.patchValue(null);
     this.router.navigate(['/heroes']);
-
   }
 
 }
