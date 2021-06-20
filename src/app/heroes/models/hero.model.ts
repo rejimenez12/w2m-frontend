@@ -1,6 +1,8 @@
 export interface IHero {
-    id: number,
+    id?: number,
     name: string,
+    lastname: string,
+    email: string,
     bio: string,
     image: string,
     appearance: string,
